@@ -137,5 +137,13 @@ def process_complete():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    import os
+    # Render utilise par défaut le port 10000 (ou la variable d'env PORT)
+    port_str = os.environ.get('PORT', '10000')
+    try:
+        port = int(port_str)
+    except ValueError:
+        port = 10000
+
+    print(f"[APP] Starting Flask on 0.0.0.0:{port}", flush=True)
     app.run(host='0.0.0.0', port=port)
