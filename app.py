@@ -1,3 +1,4 @@
+print("[APP] app.py loaded", flush=True)
 from flask import Flask, request, send_file, jsonify
 from rembg import remove
 from PIL import Image, ImageFilter, ImageDraw, ImageOps
